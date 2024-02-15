@@ -3,4 +3,5 @@
     height: 200px;
     background-color: aliceblue;
     border-radius: 10px;
+    overflow: hidden;
 }

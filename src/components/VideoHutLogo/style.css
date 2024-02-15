@@ -2,8 +2,5 @@
     color: red;
     font-size: larger;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.videohut-logo::before {
-    content: \e5d0;
+    width: auto;
 }

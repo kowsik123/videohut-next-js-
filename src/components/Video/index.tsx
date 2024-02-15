@@ -1,23 +1,29 @@
 import React, { DetailedHTMLProps, VideoHTMLAttributes, useEffect, useRef, useState } from 'react'
-import './style.css'
-import MuteIcon from '../Icons/MuteIcon';
-import VolumeIcon from '../Icons/VolumeIcon';
+import './style.css';
+import { useTabVisibility } from '../customHooks';
 
 export type VideoPropType = {
-  tag?: string,
-  muteOption?: boolean,
   src: string | undefined
 } & DetailedHTMLProps<VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>;
 
-const Video = ({tag, muteOption=false, src, ...props}: VideoPropType ) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(false);
+const Video = React.forwardRef(({src, ...props}: VideoPropType, ref: React.LegacyRef<HTMLVideoElement> ) => {
+  const videoElementRef = useRef<HTMLVideoElement>(null);
+  const videoRef : any = ref || videoElementRef;
+  const isPreviouslyPlaying = useRef(false);
+  useTabVisibility( (isVisible)=>{
+    if(!videoRef.current) return;
+    const video = videoRef.current;
+    if(isVisible) {
+      if(isPreviouslyPlaying) video.play();
+    } else {
+      isPreviouslyPlaying.current = video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
+      video.pause();
+    }
+  } );
   useEffect(()=>{
     if(videoRef.current) {
-      if(videoRef.current.muted) {
-        setMuted(true);
-      }
       const observer = new IntersectionObserver(([entry]: any)=>{
+        console.log(entry);
         if(entry.isIntersecting) {
           entry.target.play();
         } else {
@@ -28,18 +34,11 @@ const Video = ({tag, muteOption=false, src, ...props}: VideoPropType ) => {
       return ()=>observer.disconnect();
     }
   }, [videoRef]);
-  const muteButtonHandler = ()=>{
-    if(videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted
-      setMuted(videoRef.current.muted);
-    }
-  };
   return (
     <div className='video-container'>
-      <video src={src} ref={videoRef} className='auto-play-video' controls={false} muted {...props} />
-      
+      <video src={src} ref={videoRef} className='auto-play-video' controls={false} {...props} />
     </div>
   )
-}
+});
 
 export default Video

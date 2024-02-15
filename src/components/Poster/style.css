@@ -1,0 +1,82 @@
+.poster {
+    position: relative;
+}
+
+.video-mute-button {
+    color: rgba(255, 255, 255, 0.75);
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.video-mute-button:hover {
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.poster-tag {
+    color: white;
+    border-left: 4px solid rgba(255, 255, 255, 0.75);
+    padding: 0px 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 30px;
+    height: 34px;
+}
+
+.poster-options {
+    position: absolute;
+    bottom: 20%;
+    right: 0px;
+    display: flex;
+}
+
+.poster-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.poster-info {
+    width: 35%;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    color: white;
+    padding: 20px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+.poster-info::-webkit-scrollbar {
+    display: none;
+}
+
+.poster-bottom-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient( transparent, black);
+}
+
+.movie-options {
+    display: flex;
+}
+
+.movie-options .button {
+    margin: 10px;
+}

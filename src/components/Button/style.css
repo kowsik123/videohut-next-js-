@@ -1,0 +1,124 @@
+.button {
+    all: unset;
+    box-sizing: border-box;
+    padding: 4px 10px;
+    transition: color .5s;
+    cursor: default;
+}
+
+.button.basic {
+    color: white;
+}
+
+.button.clickable {
+    cursor: pointer;
+}
+
+.button.basic.clickable:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.button.basic.clickable {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.button.button-fill {
+    background-color: white;
+    color: rgb(48, 48, 48);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 4px 20px;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.button.clickable.button-fill:hover {
+    opacity: 1;
+}
+
+.button.border-animation {
+    background-color: rgb(225, 225, 225);
+    color: rgb(45, 45, 45);
+    margin: 1px;
+    border-radius: 5px;
+}
+
+.button-outer {
+    margin: 10px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.button-outer .button {
+    position: relative;
+}
+
+.animator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(0, 255, 166), rgb(65, 230, 255));
+    box-shadow: 0 0 5px rgb(0 255 227);
+    border-radius: 5px;
+}
+
+.animator-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(0, 255, 166), rgb(65, 230, 255));
+    box-shadow: 0 0 5px rgb(140, 255, 230);
+    transition: width 1s;
+    height: 2.5px;
+    width: 0;
+}
+
+.button-outer:hover .animator-top {
+    width: 100%;
+}
+
+.animator-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(rgb(0, 255, 166), rgb(65, 230, 255));
+    box-shadow: 0 0 5px rgb(140, 255, 230);
+    transition: height 1s;
+    height: 0;
+    width: 2.5px;
+}
+
+.button-outer:hover .animator-right {
+    height: 100%;
+}
+
+.animator-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgb(0, 255, 166), rgb(65, 230, 255));
+    box-shadow: 0 0 5px rgb(140, 255, 230);
+    transition: width 1s;
+    height: 2.5px;
+    width: 0;
+}
+
+.button-outer:hover .animator-bottom {
+    width: 100%;
+}
+
+.animator-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(rgb(0, 255, 166), rgb(65, 230, 255));
+    box-shadow: 0 0 5px rgb(140, 255, 230);
+    transition: height 1s;
+    height: 0;
+    width: 2.5px;
+}
+
+.button-outer:hover .animator-left {
+    height: 100%;
+}
